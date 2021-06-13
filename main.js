@@ -9,6 +9,8 @@ const date = [spring, summer, autumn, winter];
 // console.log(date[2].text);
 const pushBtn = document.getElementById('pushBtn');
 const viewImg = document.getElementById('viewImg');
+const seasonNum = document.getElementById('seasonNum');
+const skipBtn = document.getElementById('skipBtn');
 
 let imgNum = 0;
 
@@ -17,14 +19,21 @@ viewImg.setAttribute('src', date[imgNum].img);
 
 
 pushBtn.addEventListener("click", () => {
+    selectNum();
+});
+
+skipBtn.addEventListener("click", () => {
+    imgNum = Number(seasonNum.value);
+    selectNum();
+});
+
+const selectNum = function () {
     if (imgNum === 3) {
         imgNum = 0;
     } else {
         imgNum += 1;
     }
-    console.log(date[imgNum].img)
-    console.log(date[imgNum].text)
 
     viewImg.setAttribute('src', date[imgNum].img);
     pushBtn.textContent = date[imgNum].text;
-})
+}
